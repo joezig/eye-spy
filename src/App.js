@@ -1,17 +1,18 @@
-import React from "react";
+import React from 'react';
 
 import {
   BrowserRouter as Router,
   Route,
   Redirect,
   Switch
-} from "react-router-dom";
+} from 'react-router-dom';
 
-import MainNavigation from "./shared/components/navigation/main-navigation";
-import NewPlace from "./places/pages/new-place";
-import Users from "./user/pages/users";
+import MainNavigation from './shared/components/navigation/main-navigation';
+import NewPlace from './places/pages/new-place';
+import UserPlaces from './places/pages/user-places';
+import Users from './user/pages/users';
 
-import "./App.css";
+import './App.css';
 
 const App = () => {
   return (
@@ -19,13 +20,16 @@ const App = () => {
       <MainNavigation />
       <main>
         <Switch>
-          <Route exact path="/">
+          <Route exact path='/'>
             <Users />
           </Route>
-          <Route exact path="/places/new">
+          <Route exact path='/:userId/places'>
+            <UserPlaces />
+          </Route>
+          <Route exact path='/places/new'>
             <NewPlace />
           </Route>
-          <Redirect to="/" />
+          <Redirect to='/' />
         </Switch>
       </main>
     </Router>
